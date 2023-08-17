@@ -1,6 +1,4 @@
 import styled from 'styled-components'
-import Header from './componentes/Header';
-import CardCategoria from './componentes/CardCategoria';
 
 const AppContainer = styled.div`
   width: 100vw;
@@ -11,8 +9,6 @@ const AppContainer = styled.div`
 function App() {
   return (
     <AppContainer className='App'>
-      <Header/>
-      <CardCategoria/>
     </AppContainer>
   );
 }
