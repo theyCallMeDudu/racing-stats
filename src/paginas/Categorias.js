@@ -5,15 +5,27 @@ const AppContainer = styled.div`
     width: 100vw;
     height: 100vh;
     background-image: linear-gradient(90deg,#002F52 35%,#326589 165%);
+    display: flex;
+    justify-content: center;
+`
+
+const ContainerCategorias = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
+
+const Title = styled.h1`
+    color: #FFF;
 `
 
 function Categorias() {
     return (
         <AppContainer>
-            <div>
-                <h1>Explore as categorias disponíveis!</h1>
+            <ContainerCategorias>
+                <Title>Explore as categorias disponíveis!</Title>
                 <CardCategoria/>
-            </div>
+            </ContainerCategorias>
         </AppContainer>
     )
 }

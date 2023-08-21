@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { categorias } from './categorias'
+import { topicos } from './topicos'
 import { Titulo } from '../Titulo'
 import { Link } from 'react-router-dom'
 
@@ -17,17 +17,17 @@ const Card = styled.div`
     text-align: center;
 `
 
-function CardCategoria({titulo, img}) {
+function CardTopico({titulo, img}) {
     return (
         <Cards>
-            { categorias.map( (categoria) => (
-                <Card key={categoria.id}>
-                    <Link to={geraLinkCategoriaPeloNome(categoria.nome)}>
-                        <img src={categoria.src} width='200px'/>
+            { topicos.map( (topico) => (
+                <Card key={topico.id}>
+                    <Link to={geraLinkTopicoPeloNome(topico.nome)}>
+                        <img src={topico.src} width='200px'/>
                         <Titulo
                             tamanhoFonte='16px'
                         >
-                            {categoria.nome}
+                            {topico.nome}
                         </Titulo>
                     </Link>
                 </Card>
@@ -36,8 +36,8 @@ function CardCategoria({titulo, img}) {
     )
 }
 
-function geraLinkCategoriaPeloNome(nomeCategoria) {
-    return `/categorias/${nomeCategoria.replace(/\s+/g, '-').toLowerCase()}`;
+function geraLinkTopicoPeloNome(nomeTopico) {
+    return `/topicos/${nomeTopico.replace(/\s+/g, '-').toLowerCase()}`;
 }
 
-export default CardCategoria
+export default CardTopico

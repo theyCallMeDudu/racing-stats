@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Banner from './componentes/Banner';
 
 const AppContainer = styled.div`
   width: 100vw;
@@ -7,8 +8,10 @@ const AppContainer = styled.div`
 `
 
 function App() {
+
   return (
     <AppContainer className='App'>
+      <Banner/>
     </AppContainer>
   );
 }

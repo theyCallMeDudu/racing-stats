@@ -6,8 +6,9 @@ import reportWebVitals from './reportWebVitals';
 import { createGlobalStyle } from 'styled-components'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Header from './componentes/Header';
-import Banner from './componentes/Banner';
 import Categorias from './paginas/Categorias';
+import { categorias } from './componentes/CardCategoria/categorias';
+import PaginaCategoria from './componentes/PaginaCategoria';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -35,13 +36,18 @@ root.render(
     <GlobalStyle/>
     <BrowserRouter>
       <Header/>
-      <Banner/>
       <Routes>
         <Route path='/categorias' element={<Categorias/>}/>
         <Route path='/' element={<App/>}/>
+        { categorias.map((categoria) => (
+          <Route
+            key={categoria.id}
+            path={`/categorias/${categoria.nome.replace(/\s+/g, '-').toLowerCase()}`}
+            element={<PaginaCategoria nome={categoria.nome} />}
+          />
+        )) }
       </Routes>
     </BrowserRouter>
-    <App />
   </React.StrictMode>
 );
 
