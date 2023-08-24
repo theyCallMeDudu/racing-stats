@@ -9,6 +9,8 @@ import Header from './componentes/Header';
 import Categorias from './paginas/Categorias';
 import { categorias } from './componentes/CardCategoria/categorias';
 import PaginaCategoria from './componentes/PaginaCategoria';
+import PaginaTopico from './componentes/PaginaTopico';
+import { topicos } from './componentes/CardTopico/topicos';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -46,7 +48,14 @@ root.render(
             element={<PaginaCategoria nome={categoria.nome} />}
           />
         )) }
-      </Routes>
+        { topicos.map((topico) => (
+          <Route
+            key={topico.id}
+            path={`/topicos/${topico.nome.replace(/\s+/g, '-').toLowerCase()}`}
+            element={<PaginaTopico nome={topico.nome} />}
+          />
+        ))}
+        </Routes>
     </BrowserRouter>
   </React.StrictMode>
 );

@@ -17,7 +17,7 @@ const Card = styled.div`
     text-align: center;
 `
 
-function CardTopico({titulo, img}) {
+function CardTopico() {
     return (
         <Cards>
             { topicos.map( (topico) => (
