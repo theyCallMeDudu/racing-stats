@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { topicos } from '../CardTopico/topicos';
 import axios from 'axios';
 import API_BASE_URL from '../../apiConfig';
+import PaginaPilotos from '../PaginaPilotos';
 
 const ContainerPaginaTopico = styled.div`
     width: 100vw;
@@ -17,44 +18,13 @@ const TituloPaginaTopico = styled.h1`
 
 function PaginaTopico({nome}) {
     const topicoEncontrado = topicos.find((topico) => topico.nome === nome);
-    const [dados, setDados] = useState([]);
-
-    useEffect(() => {
-        async function fetchDados() {
-            try {
-                const response = await axios.get(`${API_BASE_URL}/f1/${nome.toLowerCase()}`)
-                setDados(response.data)
-                console.log('url: ', response)
-                
-            } catch (error) {
-                console.log('Erro ao buscar dados da API: ', error)
-            }
-        }
-
-        fetchDados()
-    }, [nome])
 
     return (
         <ContainerPaginaTopico>
             <TituloPaginaTopico>
                 {topicoEncontrado ? topicoEncontrado.nome : 'Tópico não encontrado :('}
             </TituloPaginaTopico>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Nacionalidade</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {dados.map((item, index) => (
-                        <tr key={index}>
-                            <td>{item.givenName} {item.familyName}</td>
-                            <td>{item.nationality}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+            {topicoEncontrado.id === 1 ? <PaginaPilotos nome={nome}/> : 'Página não encontrada'}
         </ContainerPaginaTopico>
     )
 }
