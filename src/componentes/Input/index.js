@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const CorpoInput = styled.input`
     font-size: 18px;
     width: 15%;
+    margin-bottom: 30px;
 `
 
 function Input({ tipo, valor, funcao, onBlur }) {

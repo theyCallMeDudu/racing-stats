@@ -12,8 +12,23 @@ const ContainerPaginaPilotos = styled.div`
     text-align: center;
 `
 
-const TituloPaginaPilotos = styled.h1`
-    color: #FFF;
+const CorpoPagina = styled.div`
+    display: flex;
+    justify-content: center;
+`
+
+const Tabela = styled.table`
+    background-color: #FFF;
+    max-height: 50px !important;
+    overflow: auto;
+`
+
+const CabecalhoTabela = styled.thead`
+    background-color: #FFF;
+`
+
+const CorpoTabela = styled.tbody`
+    backfound-color: #FFF;
 `
 
 function PaginaPilotos({nome}) {
@@ -62,24 +77,26 @@ function PaginaPilotos({nome}) {
                 />
             </div>
             { anoDigitado && anoDigitado.length >= 4 && loading ? (
-                <img src={loadingGif} alt='Carregando...'/>
+                <img src={loadingGif} alt='Carregando...' width={'50px'}/>
             ) : (
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Nacionalidade</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {dados.map((item, index) => (
-                            <tr key={index}>
-                                <td>{item.givenName} {item.familyName}</td>
-                                <td>{item.nationality}</td>
+                <CorpoPagina>
+                    <Tabela>
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Nacionalidade</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {dados.map((item, index) => (
+                                <tr key={index}>
+                                    <td>{item.givenName} {item.familyName}</td>
+                                    <td>{item.nationality}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </Tabela>
+                </CorpoPagina>
             ) }
         </ContainerPaginaPilotos>
     )
