@@ -4,6 +4,9 @@ import axios from 'axios';
 import API_BASE_URL from '../../apiConfig';
 import loadingGif from '../../imagens/loading.gif';
 import Input from '../Input';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
 
 const ContainerPaginaPilotos = styled.div`
     width: 100vw;
@@ -85,6 +88,7 @@ function PaginaPilotos({nome}) {
                             <tr>
                                 <th>Nome</th>
                                 <th>Nacionalidade</th>
+                                <th>Ação</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -92,6 +96,11 @@ function PaginaPilotos({nome}) {
                                 <tr key={index}>
                                     <td>{item.givenName} {item.familyName}</td>
                                     <td>{item.nationality}</td>
+                                    <td>
+                                        <Link to={`/piloto/${item.driverId}`} driverId={item.driverId}>
+                                            <FontAwesomeIcon icon={faEye}/>
+                                        </Link>
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>

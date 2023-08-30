@@ -11,6 +11,7 @@ import { categorias } from './componentes/CardCategoria/categorias';
 import PaginaCategoria from './componentes/PaginaCategoria';
 import PaginaTopico from './componentes/PaginaTopico';
 import { topicos } from './componentes/CardTopico/topicos';
+import Piloto from './componentes/Piloto';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -55,6 +56,10 @@ root.render(
             element={<PaginaTopico nome={topico.nome} />}
           />
         ))}
+        <Route
+          path={`/piloto/:id`}
+          element={<Piloto/>}
+        />
         </Routes>
     </BrowserRouter>
   </React.StrictMode>
